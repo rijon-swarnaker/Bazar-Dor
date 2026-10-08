@@ -16,7 +16,7 @@ interface MarqueePageProps {
 
 const MarqueePage = async () => {
   const res = await fetch(
-    "https://api.api-store.workers.dev/api/bazardor/products",
+    "https://api.abcz.workers.dev/api/bazardor/products",
   );
   const data: MarqueePageProps[] = await res.json();
   const increase = data.filter((items) =>
@@ -44,9 +44,9 @@ const MarqueePage = async () => {
 
             <span>
               {m.change.dir === "up" ? (
-                <span className="text-red-600">▲ {m.change.pct} %</span>
+                <span className="text-red-600">▲ {Number(m.change.pct).toFixed(1)} %</span>
               ) : (
-                <span className="text-green-600">▼ {Math.abs(Number(m.change.pct))} %</span>
+                <span className="text-green-600">▼ {Math.abs(Number(m.change.pct)).toFixed(1)} %</span>
               )}
             </span>
           </div>

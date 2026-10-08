@@ -10,7 +10,7 @@ interface NavBerProps {
 
 const NavBer = async () => {
   const res = await fetch(
-    "https://api.api-store.workers.dev/api/bazardor/categories",{next:{revalidate:3600}}
+    "https://api.abcz.workers.dev/api/bazardor/categories",{next:{revalidate:3600}}
   ) ;
   if (!res.ok) {
     throw new Error("Failed to fetch api data");
@@ -19,7 +19,7 @@ const NavBer = async () => {
 //   console.log(data);
 
   return (
-    <div className="py-1.5 border-b border-base-300">
+    <div className="py-1.5 border-b border-base-300 bg-[#FAFCFA]">
       <div className="flex gap-4 container mx-auto ">
         {data.map((i) => (
           <Link href={i.slug} key={i.id}>

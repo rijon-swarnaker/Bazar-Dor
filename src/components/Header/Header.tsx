@@ -3,6 +3,7 @@
 import Image from "next/image";
 import React, { useEffect, useState } from "react";
 import webLogo from "/public/logo-icon.png";
+import Link from "next/link";
 
 const HeaderPage = () => {
   const [date, setDate] = useState("");
@@ -21,6 +22,7 @@ const HeaderPage = () => {
     <div className="bg-[#F9FBF9] pt-2 border-b border-base-300 pb-2 ">
       <div className=" container mx-auto flex justify-between items-center ">
         {/* Website logo  */}
+      <Link href={'/'}>
       <div className="flex items-center gap-3">
         <Image
           src={webLogo}
@@ -34,6 +36,7 @@ const HeaderPage = () => {
           <span className="text-sm text-gray-500">{date || "লোড হচ্ছে..."}</span>
         </div>
       </div>
+      </Link>
 
       {/* My profile / sign-in sign-up */}
       <div>
