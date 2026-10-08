@@ -1,10 +1,14 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Geist_Mono, Hind_Siliguri } from "next/font/google";
 import "./globals.css";
+import HeaderPage from "@/components/Header/Header";
+import NavBer from "@/components/Header/NavBer/NavBer";
+import { Suspense } from "react";
+import MarqueePage from "@/components/Header/Marquee/Marquee";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
+const hindSiliguri = Hind_Siliguri({
+  subsets: ["bengali"],
+  weight: ["400", "600", "700"],
 });
 
 const geistMono = Geist_Mono({
@@ -21,9 +25,20 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html
       lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
+      data-theme="light"
+      className={`${hindSiliguri.className} ${geistMono.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col">{children}</body>
+      <body className="min-h-full flex flex-col">
+        <HeaderPage />
+        <Suspense fallback={<div>Loading navbar...</div>}>
+          <NavBer />
+        </Suspense>
+        
+        <Suspense fallback={<div>Loading navbar...</div>}>
+          <MarqueePage/>
+        </Suspense>
+        <main>{children}</main>
+      </body>
     </html>
   );
 }
