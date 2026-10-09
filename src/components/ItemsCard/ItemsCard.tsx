@@ -1,14 +1,14 @@
 import React from "react";
-import { DecreaseItemsProps } from "../HomeItemsSection/DecreaseItems";
+import { CardItemsType } from "@/Types/CardItemType";
 
 interface ItemsCardProps {
-  card: DecreaseItemsProps;
+  card: CardItemsType;
 }
 
 const ItemsCard = ({ card }: ItemsCardProps) => {
   return (
     <div className="bg-[#FAFCFA] p-4 rounded-2xl">
-      <div className="flex  gap-4 items-center pb-3">
+      <div className="flex  gap-4 items-center pb-5">
         {/* card img */}
         <div>
           <span className="text-4xl px-1 rounded-2xl bg-[#F0F5F0]">
@@ -44,11 +44,13 @@ const ItemsCard = ({ card }: ItemsCardProps) => {
                 <span className="text-red-600">
                   ▲ {Number(card.change.pct).toFixed(1)}%
                 </span>
-              ) : (
+              ) : card.change.dir==='down' ? (
                 <span className="text-green-600">
                   ▼ {Math.abs(Number(card.change.pct)).toFixed(1)}%
                 </span>
-              )}
+              ):<span>
+                — {Math.abs(Number(card.change.pct)).toFixed(1)}%
+                </span>}
             </span>
           </div>
         </div>

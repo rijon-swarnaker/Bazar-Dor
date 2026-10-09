@@ -1,28 +1,18 @@
+import { CardItemsType } from "@/Types/CardItemType";
 import MarqueeText from "react-marquee-text";
 import "react-marquee-text/dist/styles.css";
 
-interface MarqueePageProps {
-  id: string;
-  nameBn: string;
-  image: string;
-  unit: string;
-  today: string;
 
-  change: {
-    dir: string;
-    pct: string;
-  };
-}
 
 const MarqueePage = async () => {
   const res = await fetch(
     "https://api.abcz.workers.dev/api/bazardor/products",
   );
-  const data: MarqueePageProps[] = await res.json();
+  const data: CardItemsType[] = await res.json();
   const increase = data.filter((items) =>
     ["up", "down"].includes(items.change.dir),
   );
-  console.log(increase);
+
 
   return (
     <div className="border-b py-1 border-base-300">

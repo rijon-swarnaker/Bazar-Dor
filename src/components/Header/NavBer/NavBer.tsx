@@ -20,10 +20,10 @@ const NavBer = async () => {
 
   return (
     <div className="py-1.5 border-b border-base-300 bg-[#FAFCFA]">
-      <div className="flex gap-4 container mx-auto ">
+      <div className="container mx-auto flex items-center gap-2 overflow-x-auto whitespace-nowrap px-3  sm:gap-4 sm:px-4 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
         {data.map((i) => (
-          <Link href={i.slug} key={i.id}>
-            <div className="flex hover:bg-base-300 px-1.5 py-1 rounded-[10px]">
+          <Link href={`/category/${i.slug}`} key={i.id}>
+            <div className="flex shrink-0 items-center gap-1 rounded-lg px-3  text-base transition-colors hover:bg-base-300 sm:text-lg ">
               <span>{i.icon}</span>
               <h3>{i.nameBn}</h3>
             </div>

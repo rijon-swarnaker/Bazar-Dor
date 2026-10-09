@@ -28,16 +28,23 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       data-theme="light"
       className={`${hindSiliguri.className} ${geistMono.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col">
-        <HeaderPage />
-        <Suspense fallback={<div>Loading navbar...</div>}>
-          <NavBer />
-        </Suspense>
+      <body className="min-h-full flex flex-col ">
+        <div className="sticky top-0 z-50">
+          <HeaderPage />
+
+          <Suspense fallback={<div>Loading navbar...</div>}>
+            <NavBer />
+          </Suspense>
+          </div>
+
+          <Suspense
+            fallback={<span className="loading loading-dots loading-xl"></span>}
+          >
+            <MarqueePage />
+          </Suspense>
+
+          <main>{children}</main>
         
-        <Suspense fallback={<div>Loading navbar...</div>}>
-          <MarqueePage/>
-        </Suspense>
-        <main>{children}</main>
       </body>
     </html>
   );

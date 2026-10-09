@@ -19,7 +19,7 @@ const HeaderPage = () => {
   }, []);
 
   return (
-    <div className="bg-[#F9FBF9] pt-2 border-b border-base-300 pb-2 ">
+    <div className="bg-[#F9FBF9] pt-2 border-b border-base-300 pb-2 px-3 lg:px-0">
       <div className=" container mx-auto flex justify-between items-center ">
         {/* Website logo  */}
       <Link href={'/'}>
@@ -44,6 +44,7 @@ const HeaderPage = () => {
         <button className="btn bg-[#05893E] text-white font-bold rounded-2xl ">সাইন আপ</button>
       </div>
       </div>
+      
     </div>
   );
 };

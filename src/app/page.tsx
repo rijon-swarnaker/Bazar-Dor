@@ -6,15 +6,17 @@ import { Suspense } from "react";
 
 import DecreaseItems from "@/components/HomeItemsSection/DecreaseItems";
 import IncreaseItems from "@/components/HomeItemsSection/IncreaseItems";
+import AllItemsPage from "@/components/HomeItemsSection/AllItems";
+import CardSkeleton from "@/components/Skeleton/Skeleton";
 
 export default  function Home() {
   
 
   return (
-    <div className="bg-[#F0F5F0] pt-8 pb-8">
+    <div className="bg-[#F0F5F0] pt-8 pb-8 px-3 lg:px-0">
       {/* Hero Section */}
       <div className="container mx-auto bg-[#FAFCFA] rounded-2xl p-3 pt-5">
-        <div className="flex justify-between items-center ">
+        <div className="md:flex justify-between items-center ">
           {/* Hero Text */}
           <div>
             <span>
@@ -28,8 +30,8 @@ export default  function Home() {
               বিস্তারিত, গড়, <br /> সর্বনিম্ন-সর্বাধিক এবং দামের পরিবর্তন এক
               জায়গায়।
             </p>
-            <Link href={""}>
-              <button className="btn bg-[#05893E] text-white font-bold rounded-2xl px-6 py-5 ">
+            <Link href={'#all-items'}>
+              <button  className="btn bg-[#05893E] text-white font-bold rounded-2xl px-6 py-5 ">
                 সব পণ্য দেখুন
               </button>
             </Link>
@@ -50,9 +52,10 @@ export default  function Home() {
 
       {/* Increase card section  */}
       <div className="container mx-auto">
-        <Suspense fallback={<div>Loading...</div>}>
+        <Suspense fallback={<CardSkeleton/>}>
           <IncreaseItems/>
           <DecreaseItems/>
+          <AllItemsPage/>
         </Suspense>
       </div>
     </div>
