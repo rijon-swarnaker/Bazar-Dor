@@ -11,7 +11,7 @@ const ProductDetailsPage = async ({ params }: ProductDetailsProps) => {
   const { slug } = await params;
 
   const res = await fetch(
-    `https://api.abcz.workers.dev/api/bazardor/products/${slug}`,
+    `https://api.api-store.workers.dev/api/bazardor/products/${slug}`,
   );
   if (!res.ok) {
     notFound();
@@ -179,7 +179,7 @@ const ProductDetailsPage = async ({ params }: ProductDetailsProps) => {
 
               {/* Responsive Table */}
               <div className="overflow-x-auto">
-                <table className="w-full min-w-[650px] border-collapse text-left">
+                <table className="w-full min-w-162.5 border-collapse text-left">
                   <thead>
                     <tr className="bg-[#F0F5F0] text-sm text-gray-600">
                       <th className="px-5 py-4 font-semibold sm:px-6">বাজার</th>
