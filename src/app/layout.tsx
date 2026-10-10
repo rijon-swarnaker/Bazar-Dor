@@ -6,6 +6,7 @@ import NavBer from "@/components/Header/NavBer/NavBer";
 import { Suspense } from "react";
 import MarqueePage from "@/components/Header/Marquee/Marquee";
 import FooterPage from "@/components/Footer/Footer";
+import { Toaster } from "react-hot-toast";
 
 const hindSiliguri = Hind_Siliguri({
   subsets: ["bengali"],
@@ -47,6 +48,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
 
           <main>{children}</main>
           <FooterPage/>
+          <Toaster />
         
       </body>
     </html>
