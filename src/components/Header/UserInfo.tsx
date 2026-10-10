@@ -12,7 +12,7 @@ const UserInfoPage = () => {
 
   if (isPending) {
     return (
-      <div className="flex min-h-12.5 w-57 animate-pulse items-center justify-between gap-2 rounded-2xl border border-[#25352A]/10 bg-[#F1F5F1] px-3 py-2 md:w-70">
+      <div className="flex min-h-12.5 w-40 animate-pulse items-center justify-between gap-2 rounded-2xl border border-[#25352A]/10 bg-[#F1F5F1] px-3 py-2 md:w-70">
         {/* Profile Image Skeleton */}
         <div className="h-8 w-11 shrink-0 rounded-full bg-gray-300" />
 
@@ -59,7 +59,7 @@ const UserInfoPage = () => {
       <button
         type="button"
         tabIndex={0}
-        className="flex min-h-12.5 w-57 md:w-70 items-center justify-between gap-2 rounded-2xl hover:border border-[#25352A] bg-[#F1F5F1] px-3 py-2 transition-colors hover:bg-[#E8F0E9]"
+        className="flex min-h-12.5 w-40 md:w-70 items-center justify-between gap-2 rounded-2xl hover:border border-[#25352A] bg-[#F1F5F1] px-3 py-2 transition-colors hover:bg-[#E8F0E9]"
       >
         {user.image ? (
           <Image
@@ -96,7 +96,7 @@ const UserInfoPage = () => {
       {/* Dropdown Menu */}
       <ul
         tabIndex={0}
-        className="menu dropdown-content z-100 mt-2  gap-0 rounded-3xl border border-[#DDE6DF] bg-[#FBFCFB] p-3 shadow-[0_12px_24px_rgba(24,45,30,0.12)]"
+        className="menu dropdown-content z-100 mt-2 w-57  gap-0 rounded-3xl border border-[#DDE6DF] bg-[#FBFCFB] p-3 shadow-[0_12px_24px_rgba(24,45,30,0.12)]"
       >
         {/* User Name & Email */}
         <li className="pointer-events-none">

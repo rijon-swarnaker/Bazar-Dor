@@ -7,7 +7,7 @@ interface ItemsCardProps {
 
 const ItemsCard = ({ card }: ItemsCardProps) => {
   return (
-    <div className="bg-[#FAFCFA] p-4 rounded-2xl">
+    <div className="bg-[#FAFCFA] p-4 border border-transparent hover:border-green-600 rounded-2xl transition-all duration-300 ease-in-out">
       <div className="flex  gap-4 items-center pb-5">
         {/* card img */}
         <div>

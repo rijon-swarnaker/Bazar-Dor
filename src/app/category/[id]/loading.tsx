@@ -32,7 +32,7 @@ const loading = () => {
         <div className="h-6 w-16 rounded-2xl bg-gray-200" />{" "}
       </div>{" "}
       {/* Cards Skeleton */}
-          <div className="grid grid-cols-3 gap-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
             {Array.from({ length: 6 }).map((_, index) => (
               <div key={index}>
                 <div className="border border-gray-100 rounded-xl p-4">
