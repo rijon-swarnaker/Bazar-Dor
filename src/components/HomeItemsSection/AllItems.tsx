@@ -6,7 +6,7 @@ import ItemsSortList from '../SortBy/SortBy';
 
 const AllItemsPage = async() => {
     const res = await fetch(
-        "https://api.api-store.workers.dev/api/bazardor/products",
+        "https://openapi.programming-hero.com/api/bazardor/products",
       );
       if (!res.ok) {
         throw new Error("Failed to fetch api data");

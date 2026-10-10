@@ -6,7 +6,7 @@ import "react-marquee-text/dist/styles.css";
 
 const MarqueePage = async () => {
   const res = await fetch(
-    "https://api.api-store.workers.dev/api/bazardor/products",
+    "https://openapi.programming-hero.com/api/bazardor/products",
   );
   const data: CardItemsType[] = await res.json();
   const increase = data.filter((items) =>

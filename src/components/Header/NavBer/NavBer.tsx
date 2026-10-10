@@ -11,7 +11,7 @@ interface NavBerProps {
 
 const NavBer = async () => {
   const res = await fetch(
-    "https://api.api-store.workers.dev/api/bazardor/categories",{next:{revalidate:3600}}
+    "https://openapi.programming-hero.com/api/bazardor/categories",{next:{revalidate:3600}}
   ) ;
   if (!res.ok) {
     throw new Error("Failed to fetch api data");

@@ -6,9 +6,9 @@ import { Eye, EyeOff } from "lucide-react";
 import { signIn } from "@/lib/auth-client";
 import toast from "react-hot-toast";
 
-interface UserProps{
-    email:string
-    password :string
+interface UserProps {
+  email: string;
+  password: string;
 }
 
 export default function SignInPage() {
@@ -18,23 +18,41 @@ export default function SignInPage() {
     e.preventDefault();
 
     const formData = new FormData(e.currentTarget);
-    const user = Object.fromEntries(formData.entries()) as unknown as UserProps
+    const user = Object.fromEntries(formData.entries()) as unknown as UserProps;
 
-    const {data,error} = await signIn.email({
-        ...user,
-        callbackURL:'/'
-    })
-    
-    if(data){
-        toast.success('সফলভাবে সাইন ইন হয়েছে।')
-        
+    const { data, error } = await signIn.email({
+      ...user,
+      callbackURL: "/",
+    });
+
+    if (data) {
+      toast.success("সফলভাবে সাইন ইন হয়েছে।");
     }
 
-    if(error){
-        toast.error(error.message || "সাইন ইন ব্যর্থ হয়েছে!")
+    if (error) {
+      toast.error(error.message || "সাইন ইন ব্যর্থ হয়েছে!");
     }
-    
+  }
+  const HandleGoogleSignIn = async () => {
+    const { error } = await signIn.social({
+      provider: "google",
+      callbackURL: "/?auth=success",
+    });
+
+    if (error) {
+      toast.error(error.message || "Google দিয়ে লগইন করা যায়নি!");
+    }
   };
+  const HandleGithubSignIn = async () => {
+  const { error } = await signIn.social({
+    provider: "github",
+    callbackURL: "/?auth=success",
+  });
+
+  if (error) {
+    toast.error(error.message || "GitHub দিয়ে লগইন করা যায়নি!");
+  }
+};
 
   return (
     <main className=" bg-[#f0f5f1] px-4 py-10 sm:py-4 container mx-auto">
@@ -133,9 +151,7 @@ export default function SignInPage() {
               {/* Google */}
               <button
                 type="button"
-                onClick={() => {
-                  // Google OAuth এখানে যুক্ত করবে
-                }}
+                onClick={HandleGoogleSignIn}
                 className="btn h-14 min-h-14.5 rounded-xl border-[#27312a] bg-transparent px-3 text-base font-bold leading-6 text-black hover:border-[#07883f] hover:bg-[#f0f5f1]"
               >
                 <svg
@@ -175,9 +191,7 @@ export default function SignInPage() {
               {/* GitHub */}
               <button
                 type="button"
-                onClick={() => {
-                  // GitHub OAuth এখানে যুক্ত করবে
-                }}
+                onClick={HandleGithubSignIn}
                 className="btn h-14 min-h-14 rounded-xl border-[#27312a] bg-transparent px-3 text-base font-bold leading-6 text-black hover:border-[#07883f] hover:bg-[#f0f5f1]"
               >
                 <svg

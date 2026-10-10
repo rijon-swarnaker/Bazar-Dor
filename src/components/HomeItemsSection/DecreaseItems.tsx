@@ -4,7 +4,7 @@ import { CardItemsType } from "@/Types/CardItemType";
 import Link from "next/link";
 
 const DecreaseItems = async () => {
-  const res = await fetch("https://api.api-store.workers.dev/api/bazardor/products");
+  const res = await fetch("https://openapi.programming-hero.com/api/bazardor/products");
   if (!res.ok) {
     throw new Error("Failed to fetch api data");
   }

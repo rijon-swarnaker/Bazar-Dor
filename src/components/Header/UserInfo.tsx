@@ -3,24 +3,32 @@
 import { useSession, signOut } from "@/lib/auth-client";
 import Image from "next/image";
 import Link from "next/link";
-
+import { redirect } from "next/navigation";
+import toast from "react-hot-toast";
 
 const UserInfoPage = () => {
   const { data, isPending } = useSession();
   const user = data?.user;
 
-
   if (isPending) {
-    return <div className="skeleton h-14 w-60 rounded-2xl" />;
+    return (
+      <div className="flex min-h-12.5 w-57 animate-pulse items-center justify-between gap-2 rounded-2xl border border-[#25352A]/10 bg-[#F1F5F1] px-3 py-2 md:w-70">
+        {/* Profile Image Skeleton */}
+        <div className="h-8 w-11 shrink-0 rounded-full bg-gray-300" />
+
+        {/* User Name Skeleton */}
+        <div className="h-4 w-28 flex-1 rounded-md bg-gray-300" />
+
+        {/* Dropdown Icon Skeleton */}
+        <div className="h-4 w-4 shrink-0 rounded-sm bg-gray-300" />
+      </div>
+    );
   }
 
   if (!user) {
     return (
       <div className="flex items-center gap-2">
-        <Link
-          href="/signin"
-          className="btn btn-ghost rounded-2xl font-bold"
-        >
+        <Link href="/signin" className="btn btn-ghost rounded-2xl font-bold">
           সাইন ইন
         </Link>
 
@@ -33,6 +41,17 @@ const UserInfoPage = () => {
       </div>
     );
   }
+  const HandleSignOut = async () => {
+    const { error } = await signOut();
+
+    if (error) {
+      toast.error("সাইন আউট করা যায়নি!");
+      return;
+    }
+
+    toast.success("সফলভাবে সাইন আউট হয়েছে!");
+    redirect('/')
+  };
 
   return (
     <div className="dropdown dropdown-end">
@@ -105,7 +124,7 @@ const UserInfoPage = () => {
         <li className="mt-1">
           <button
             type="button"
-            onClick={()=>signOut()}
+            onClick={HandleSignOut}
             className="gap-3 rounded-xl px-3 py-2.5 text-lg font-medium text-[#F04444] hover:bg-red-50"
           >
             <span className="text-lg">↩️</span>

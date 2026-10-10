@@ -8,12 +8,17 @@ import DecreaseItems from "@/components/HomeItemsSection/DecreaseItems";
 import IncreaseItems from "@/components/HomeItemsSection/IncreaseItems";
 import AllItemsPage from "@/components/HomeItemsSection/AllItems";
 import CardSkeleton from "@/components/Skeleton/Skeleton";
+import AuthSuccessToast from "@/components/AuthSuccessToast";
 
 export default  function Home() {
   
 
   return (
+    
     <div className="bg-[#F0F5F0] pt-8 pb-8 px-3 lg:px-0">
+      <Suspense fallback={null}>
+        <AuthSuccessToast />
+      </Suspense>
       {/* Hero Section */}
       <div className="container mx-auto bg-[#FAFCFA] rounded-2xl p-3 pt-5">
         <div className="md:flex justify-between items-center ">

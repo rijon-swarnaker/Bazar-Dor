@@ -10,7 +10,7 @@ interface CategoryPageProps {
 const CategoryPage = async ({ params }: CategoryPageProps) => {
   const { id } = await params;
   const res = await fetch(
-    `https://api.api-store.workers.dev/api/bazardor/products?category=${id}`,
+    `https://openapi.programming-hero.com/api/bazardor/products?category=${id}`,
   );
   const data: CardItemsType[] = await res.json();
   if (!data || data.length === 0) {

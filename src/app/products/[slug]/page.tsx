@@ -11,7 +11,7 @@ const ProductDetailsPage = async ({ params }: ProductDetailsProps) => {
   const { slug } = await params;
 
   const res = await fetch(
-    `https://api.api-store.workers.dev/api/bazardor/products/${slug}`,
+    `https://openapi.programming-hero.com/api/bazardor/products/${slug}`,
   );
   if (!res.ok) {
     notFound();

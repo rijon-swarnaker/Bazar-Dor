@@ -1,9 +1,9 @@
 "use client";
 
-import { useState} from "react";
+import { useState } from "react";
 import Link from "next/link";
 import { Eye, EyeOff } from "lucide-react";
-import { signUp } from "@/lib/auth-client";
+import { signIn, signUp } from "@/lib/auth-client";
 import { redirect } from "next/navigation";
 import toast from "react-hot-toast";
 
@@ -38,28 +38,36 @@ export default function SignUpPage() {
       email: userData.email,
       password: userData.password,
     });
-    
-
-    if (data){
-        toast.success("অ্যাকাউন্ট তৈরি হয়েছে! স্বাগতম " )
-        redirect('/')
+    if(data){
+      toast.success('অ্যাকাউন্টি সাইন আপ হয়েছে। স্বাগতম')
+      redirect("/");
     }
 
     if (error) {
-      toast.error(error.message || "অ্যাকাউন্ট তৈরি করা যায়নি!");
+      toast.error(error.message || "অ্যাকাউন্ট সাইন আপ করা যায়নি!");
     }
   }
-//   const HandleGoogleSignIn = async () => {
-//   const data = await signIn.social({
-//     provider: "google",
-//   });
-//   if (data){
-//         toast.success("অ্যাকাউন্ট তৈরি হয়েছে! স্বাগতম " )
-//         redirect('/')
-        
-//     }
-    
-// };
+  const HandleGoogleSignIn = async () => {
+  const { error } = await signIn.social({
+    provider: "google",
+    callbackURL: "/?auth=success",
+  });
+
+  if (error) {
+    toast.error(error.message || "Google দিয়ে লগইন করা যায়নি!");
+  }
+};
+
+const HandleGithubSignIn = async () => {
+  const { error } = await signIn.social({
+    provider: "github",
+    callbackURL: "/?auth=success",
+  });
+
+  if (error) {
+    toast.error(error.message || "GitHub দিয়ে লগইন করা যায়নি!");
+  }
+};
 
   return (
     <main className="min-h-screen bg-[#f0f5f1] px-4 py-6 sm:py-8">
@@ -115,7 +123,7 @@ export default function SignUpPage() {
                   placeholder="you@example.com"
                   autoComplete="email"
                   required
-                  className="input input-bordered h-14.5 w-full rounded-xl border-[#cbd3cd] bg-transparent px-14.25 text-base focus:border-[#07883f] focus:outline-none"
+                  className="input input-bordered h-14.5 w-full rounded-xl border-[#cbd3cd] bg-transparent px-4.25 text-base focus:border-[#07883f] focus:outline-none"
                 />
               </div>
 
@@ -227,7 +235,7 @@ export default function SignUpPage() {
               <button
                 type="button"
                 className="btn h-14.5 min-h-14.5 rounded-xl border-[#27312a] bg-transparent px-3 text-base font-bold leading-6 text-black hover:border-[#07883f] hover:bg-[#f0f5f1]"
-                // onClick={()=>}
+                onClick={HandleGoogleSignIn}
               >
                 <svg
                   viewBox="0 0 48 48"
@@ -263,9 +271,7 @@ export default function SignUpPage() {
               <button
                 type="button"
                 className="btn h-14.5 min-h-14.5 rounded-xl border-[#27312a] bg-transparent px-3 text-base font-bold leading-6 text-black hover:border-[#07883f] hover:bg-[#f0f5f1]"
-                onClick={() => {
-                  // GitHub OAuth এখানে যুক্ত করবে।
-                }}
+                onClick={HandleGithubSignIn}
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
